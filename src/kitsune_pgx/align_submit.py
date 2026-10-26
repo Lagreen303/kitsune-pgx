@@ -32,11 +32,15 @@ def submit_align_job(cfg: Config, *, gse: str, srr: str, sample_id: str) -> str:
         ("THREADS", str(cfg.threads_per_job)),
     ]
     export_str = "ALL," + ",".join(f"{k}={v}" for k, v in export_pairs)
+    log_dir = cfg.iridis.scratch_root / "logs"
     remote = (
         f"cd {shlex.quote(str(cfg.iridis.repo))} && "
+        f"mkdir -p {shlex.quote(str(log_dir))} && "
         f"sbatch --partition={shlex.quote(partition)} "
         f"--cpus-per-task={cfg.threads_per_job} "
         f"--mem={shlex.quote(mem)} --time={shlex.quote(time_limit)} "
+        f"--output={shlex.quote(str(log_dir / '%x_%j.out'))} "
+        f"--error={shlex.quote(str(log_dir / '%x_%j.err'))} "
         f"--export={export_str} "
         f"{shlex.quote(str(slurm_script))}"
     )

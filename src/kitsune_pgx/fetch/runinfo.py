@@ -13,7 +13,7 @@ from urllib.request import Request, urlopen
 def _http_get(url: str, *, retries: int = 6) -> bytes:
     req = Request(
         url,
-        headers={"User-Agent": "kitsune-pgx/0.1 (contact: lag1e24@soton.ac.uk)"},
+        headers={"User-Agent": "kitsune-pgx/0.1"},
     )
     delay = 0.5
     for attempt in range(retries):

@@ -9,7 +9,7 @@ GSE154109,19,0,0,0,19,0,in_progress,N,,2026-09-18T11:27:43+00:00
 GSE154392,12,0,0,0,12,0,in_progress,N,,2026-09-18T11:27:43+00:00
 GSE159624,16,0,0,0,16,0,in_progress,N,,2026-09-18T11:27:43+00:00
 GSE169426,4,0,0,4,0,0,skipped_all,N,,2026-09-18T11:27:43+00:00
-GSE174125,2,1,1,0,0,0,partial,N,"1x Command '['wget', '-q', '-O', '/home/lag1e24/kitsune/work/SRR14476398/fastq/SRR14476398_1.fastq.gz', 'https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR144/098/SRR14476398/SRR14476398_1.fastq.gz']' returned non",2026-09-18T11:27:43+00:00
+GSE174125,2,1,1,0,0,0,partial,N,"1x Command '['wget', '-q', '-O', '.../kitsune/work/SRR14476398/fastq/SRR14476398_1.fastq.gz', 'https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR144/098/SRR14476398/SRR14476398_1.fastq.gz']' returned non",2026-09-18T11:27:43+00:00
 GSE180298,12,0,0,0,12,0,in_progress,N,,2026-09-18T11:27:43+00:00
 GSE182123,25,0,0,0,25,0,in_progress,N,,2026-09-18T11:27:43+00:00
 GSE182926,3,3,0,0,0,0,complete,Y,,2026-09-18T11:27:43+00:00

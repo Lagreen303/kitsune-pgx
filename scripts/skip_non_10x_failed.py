@@ -2,7 +2,9 @@
 import sqlite3
 from pathlib import Path
 
-db = Path("/home/lag1e24/kitsune/ledger/kitsune.db")
+import os
+
+db = Path(os.environ.get("KITSUNE_LEDGER", "kitsune.db"))
 conn = sqlite3.connect(db)
 cur = conn.execute(
     """

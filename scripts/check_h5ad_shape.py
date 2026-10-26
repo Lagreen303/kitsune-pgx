@@ -1,20 +1,38 @@
 #!/usr/bin/env python3
+"""Print h5ad shapes. Pass paths as arguments, or --gse GSE under $KITSUNE_ROOT/results."""
+import argparse
 import glob
-import sys
+import os
+from pathlib import Path
 
 import anndata as ad
 
-paths = sys.argv[1:] or [
-    "/iridisfs/scratch/lag1e24/kitsune/results/GSE291294/GSE291294_gencode_merged.h5ad",
-    "/iridisfs/scratch/lag1e24/kitsune/results/GSE147989/GSE147989_gencode_merged.h5ad",
-]
-for p in paths:
-    a = ad.read_h5ad(p)
-    print(f"{p}: cells={a.n_obs} genes={a.n_vars}")
-samples = glob.glob("/iridisfs/scratch/lag1e24/kitsune/results/GSE291294/*/gencode/matrix.h5ad")
-for p in samples[:3]:
-    a = ad.read_h5ad(p)
-    print(f"sample {p}: cells={a.n_obs} genes={a.n_vars}")
-    if a.n_vars < 100:
-        print("  var head:", list(a.var_names[:10]))
-        print("  var cols:", list(a.var.columns))
+
+def main() -> None:
+    p = argparse.ArgumentParser()
+    p.add_argument("paths", nargs="*", help="h5ad files to inspect")
+    p.add_argument("--gse", help="Also print up to 3 per-sample matrices under results/<GSE>")
+    p.add_argument(
+        "--results",
+        type=Path,
+        default=Path(os.environ.get("KITSUNE_ROOT", ".")) / "results",
+    )
+    args = p.parse_args()
+    paths = args.paths
+    if not paths and not args.gse:
+        p.error("pass h5ad path(s) or --gse")
+    for path in paths:
+        a = ad.read_h5ad(path)
+        print(f"{path}: cells={a.n_obs} genes={a.n_vars}")
+    if args.gse:
+        pattern = str(args.results / args.gse / "*" / "gencode" / "matrix.h5ad")
+        for path in glob.glob(pattern)[:3]:
+            a = ad.read_h5ad(path)
+            print(f"sample {path}: cells={a.n_obs} genes={a.n_vars}")
+            if a.n_vars < 100:
+                print("  var head:", list(a.var_names[:10]))
+                print("  var cols:", list(a.var.columns))
+
+
+if __name__ == "__main__":
+    main()

@@ -8,7 +8,9 @@ import yaml
 from kitsune_pgx.config import load_config
 from kitsune_pgx.align_submit import submit_align_job
 
-cfg = load_config(Path("/home/lag1e24/kitsune-pgx/config.pgx.yaml"))
+import os
+
+cfg = load_config(Path(os.environ.get("KITSUNE_CONFIG", "config.pgx.yaml")))
 ir = cfg.raw["iridis"]
 print("slurm_time type", type(ir["slurm_time"]), repr(ir["slurm_time"]))
 print("slurm_mem type", type(ir["slurm_mem"]), repr(ir["slurm_mem"]))

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import subprocess
 import time
 from pathlib import Path
@@ -8,8 +9,15 @@ from kitsune_pgx.config import Config
 from kitsune_pgx.sync.provenance import provenance_from_json, provenance_valid_for_align
 
 
+def _remote_user(cfg: Config) -> str:
+    user = cfg.raw.get("remote", {}).get("user")
+    if user:
+        return str(user)
+    return os.environ.get("USER") or os.environ.get("USERNAME") or ""
+
+
 def _ssh_base(cfg: Config) -> list[str]:
-    user = cfg.raw.get("remote", {}).get("user", "lag1e24")
+    user = _remote_user(cfg)
     host = cfg.iridis_ssh_host
     target = f"{user}@{host}" if "@" not in host else host
     identity = cfg.raw.get("remote", {}).get("identity_file")
@@ -37,7 +45,7 @@ def rsync_to_staging(
 ) -> Path:
     remote_root = cfg.iridis.staging / gse / sample_id
     ssh_run(cfg, f"mkdir -p {remote_root}")
-    user = cfg.raw.get("remote", {}).get("user", "lag1e24")
+    user = _remote_user(cfg)
     host = cfg.iridis_ssh_host
     target = f"{user}@{host}" if "@" not in host else host
     remote = f"{target}:{remote_root}/"

@@ -1,4 +1,8 @@
 # Sync src + tests + scripts to PGX and reinstall (run from repo root on Windows).
+# Set $env:KITSUNE_PGX_REMOTE to the repo path on the fetch host (default: ~/kitsune-pgx).
+$RemoteRoot = if ($env:KITSUNE_PGX_REMOTE) { $env:KITSUNE_PGX_REMOTE } else { "~/kitsune-pgx" }
+$SshHost = if ($env:KITSUNE_PGX_SSH) { $env:KITSUNE_PGX_SSH } else { "pgx" }
+
 $files = @(
   "src/kitsune_pgx/fetch/chemistry.py",
   "src/kitsune_pgx/fetch/fastq_layout.py",
@@ -11,7 +15,7 @@ $files = @(
 )
 foreach ($f in $files) {
   $local = Join-Path $PSScriptRoot ".." $f
-  $remote = "/home/lag1e24/kitsune-pgx/$f"
-  Get-Content -Raw $local | ssh pgx "mkdir -p `$(dirname $remote) 2>/dev/null; cat > $remote"
+  $remote = "$RemoteRoot/$f"
+  Get-Content -Raw $local | ssh $SshHost "mkdir -p `$(dirname $remote) 2>/dev/null; cat > $remote"
 }
-ssh pgx "/home/lag1e24/kitsune-pgx/.venv/bin/pip install -q -e /home/lag1e24/kitsune-pgx"
+ssh $SshHost "$RemoteRoot/.venv/bin/pip install -q -e $RemoteRoot"

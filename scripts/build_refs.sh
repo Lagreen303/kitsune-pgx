@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Usage: build_refs.sh [/iridisfs/scratch/lag1e24/kitsune]
+# Usage: build_refs.sh [/iridisfs/scratch/YOUR_USER/kitsune]
 set -euo pipefail
-ROOT="${1:-/iridisfs/scratch/lag1e24/kitsune}"
+ROOT="${1:-${KITSUNE_ROOT:-/iridisfs/scratch/YOUR_USER/kitsune}}"
 DDNB="/iridisfs/ddnb/Luke/kitsune/download_align_data"
 mkdir -p "${ROOT}/refs"
 echo "Copying STAR indexes (read-only ddnb → scratch). This is large and slow."

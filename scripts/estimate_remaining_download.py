@@ -7,7 +7,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from kitsune_pgx.fetch.ena import filereport_rows, parse_ena_fastqs
 
-DB = Path("/home/lag1e24/kitsune/ledger/kitsune.db")
+import os
+
+DB = Path(os.environ.get("KITSUNE_LEDGER", "kitsune.db"))
 NEED = ("PENDING", "CLAIMED", "FETCHING")
 
 

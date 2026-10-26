@@ -334,7 +334,9 @@ def main(argv: list[str] | None = None) -> None:
             ssh_run(cfg, f"mkdir -p {remote_tsv.parent}")
             identity = cfg.raw.get("remote", {}).get("identity_file")
             host = cfg.iridis_ssh_host
-            user = cfg.raw.get("remote", {}).get("user", "lag1e24")
+            from kitsune_pgx.sync.iridis import _remote_user
+
+            user = _remote_user(cfg)
             target = f"{user}@{host}" if "@" not in host else host
             scp = ["scp", "-o", "BatchMode=yes"]
             if identity:

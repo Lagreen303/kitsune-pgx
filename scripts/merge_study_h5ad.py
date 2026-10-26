@@ -62,17 +62,27 @@ def merge_one(gse_dir: Path, *, layer: str) -> Path | None:
     return out
 
 
+def _default_scratch_root() -> Path:
+    import os
+
+    root = os.environ.get("KITSUNE_ROOT")
+    if root:
+        return Path(root)
+    return Path("/iridisfs/scratch/YOUR_USER/kitsune")
+
+
 def main() -> None:
+    scratch = _default_scratch_root()
     p = argparse.ArgumentParser()
     p.add_argument(
         "--results",
         type=Path,
-        default=Path("/iridisfs/scratch/lag1e24/kitsune/results"),
+        default=scratch / "results",
     )
     p.add_argument(
         "--study-tsv",
         type=Path,
-        default=Path("/iridisfs/scratch/lag1e24/kitsune/manifest/study_completion.tsv"),
+        default=scratch / "manifest" / "study_completion.tsv",
     )
     p.add_argument("--gse", action="append", help="Merge only these GSEs (default: analysis_ready=Y)")
     args = p.parse_args()

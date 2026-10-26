@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 #SBATCH --job-name=kitsune_align
 #SBATCH --nodes=1
-#SBATCH --output=/iridisfs/scratch/lag1e24/kitsune/logs/%x_%j.out
-#SBATCH --error=/iridisfs/scratch/lag1e24/kitsune/logs/%x_%j.err
+# Log paths set at submit time via sbatch --output/--error (see align_submit.py).
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=120G
 #SBATCH --time=12:00:00

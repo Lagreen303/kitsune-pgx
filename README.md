@@ -1,6 +1,6 @@
 # kitsune-pgx
 
-Hybrid scRNA acquisition: **PGX** fetches and queues; **Iridis SLURM** aligns. All Iridis pipeline writes go under `/iridisfs/scratch/lag1e24/kitsune/` (not ddnb).
+Hybrid scRNA acquisition: **PGX** fetches and queues; **Iridis SLURM** aligns. Iridis pipeline writes go under `iridis.scratch_root` in your config (typically `/iridisfs/scratch/<user>/kitsune/`, not ddnb).
 
 ## Quick start
 
@@ -17,15 +17,14 @@ kitsune run --once
 
 ## SSH
 
-- `ssh pgx` → `lag1e24@thinkstationpgx-c053` (add your public key on the PGX first)
-- `ssh iridis-x` → Iridis login
+Configure `Host` aliases in `~/.ssh/config` (e.g. `pgx` for the fetch workstation, `iridis` for the cluster login node). Set `remote.user` and `iridis.ssh_host` in `config.yaml` — do not commit real hostnames or usernames.
 
 ## Layout
 
 | Host | Path |
 |------|------|
-| PGX (`thinkstationpgx-c053`) | `~/kitsune/{ledger,manifest,work,logs}` and repo `~/kitsune-pgx` |
-| Iridis scratch | `/iridisfs/scratch/lag1e24/kitsune/{refs,staging,work,results,repo,logs}` |
+| PGX (fetch host) | `~/kitsune/{ledger,manifest,work,logs}` and repo `~/kitsune-pgx` |
+| Iridis scratch | `$scratch_root/{refs,staging,work,results,repo,logs}` (see `config.example.yaml`) |
 
 On PGX use the full path (or add `export PATH="$HOME/kitsune-pgx/bin:$PATH"` to `~/.bashrc`):
 
@@ -81,7 +80,7 @@ Pre-aligned Cell Ranger bundles from [NONCODE v7](https://v7.noncode.org) are **
 python3.11 scripts/noncode_v7_download.py --cohort pbmc-healthy-and-hema --write-manifest
 python3.11 scripts/noncode_v7_download.py \
   --download-manifest manifest/noncode_v7_pbmc_hema.tsv \
-  --out /iridisfs/scratch/lag1e24/noncode_v7
+  --out /iridisfs/scratch/YOUR_USER/noncode_v7
 ```
 
 (v7.noncode.org currently has an expired TLS cert — the script uses `curl -k`.)
@@ -96,6 +95,6 @@ With `smallest_gse_first: true` (default in `config.pgx.yaml`), the worker claim
 
 Interactive bash only: `. ~/kitsune-pgx/scripts/pgx-env.sh` then `kitsune` (do not run `source` in PowerShell).
 
-`/data/kitsune` needs root on c053; use `~/kitsune` until an admin creates `/data`.
+Use `~/kitsune` on the fetch host unless your site provides a shared `/data/kitsune` path.
 
 See `docs/SPEC.md` (from `kitsune_pgx_spec.md`) for full behaviour.

@@ -8,7 +8,9 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-DB = Path("/home/lag1e24/kitsune/ledger/kitsune.db")
+import os
+
+DB = Path(os.environ.get("KITSUNE_LEDGER", "kitsune.db"))
 
 
 def bucket(err: str | None) -> str:

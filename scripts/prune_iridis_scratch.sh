@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Remove bulky STAR artifacts; keep h5ad, provenance, audit CRAM.
 set -euo pipefail
-ROOT="${1:-/iridisfs/scratch/lag1e24/kitsune}"
+ROOT="${1:-${KITSUNE_ROOT:-/iridisfs/scratch/YOUR_USER/kitsune}}"
 RESULTS="${ROOT}/results"
 
 echo "[$(date -Is)] prune scratch under ${ROOT}"
