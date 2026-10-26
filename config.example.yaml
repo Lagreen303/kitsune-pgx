@@ -1,0 +1,31 @@
+execution:
+  mode: hybrid  # pgx fetch + iridis slurm align
+
+paths:
+  # Use /data/kitsune if root created it; else ~/kitsune (see config.pgx.yaml)
+  ledger: /home/lag1e24/kitsune/ledger/kitsune.db
+  work: /home/lag1e24/kitsune/work
+  manifest: /home/lag1e24/kitsune/manifest
+  logs: /home/lag1e24/kitsune/logs
+
+iridis:
+  ssh_host: loginX001.iridis.soton.ac.uk
+  scratch_root: /iridisfs/scratch/lag1e24/kitsune
+  repo: /iridisfs/scratch/lag1e24/kitsune/repo/kitsune-pgx
+  ddnb_readonly:
+    gencode_star: /iridisfs/ddnb/Luke/kitsune/download_align_data/reference_sources/STAR_index_gencode49
+    noncode_star: /iridisfs/ddnb/Luke/kitsune/download_align_data/NONCODE/STAR_index
+
+remote:
+  user: lag1e24
+
+limits:
+  min_free_gb: 200
+  max_attempts: 3
+  heartbeat_timeout_min: 30
+  threads_per_job: 16
+
+options:
+  skip_tier_x: true
+  skip_already_processed: true
+  verify_md5: true

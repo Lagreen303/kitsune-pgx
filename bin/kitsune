@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$REPO" || exit 1
+if [ -d "${HOME}/miniforge3/bin" ]; then
+  export PATH="${HOME}/miniforge3/bin:${PATH}"
+fi
+export KITSUNE_CONFIG="${KITSUNE_CONFIG:-$REPO/config.pgx.yaml}"
+exec "$REPO/.venv/bin/python" -m kitsune_pgx.cli "$@"

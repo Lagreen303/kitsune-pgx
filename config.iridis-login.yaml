@@ -1,0 +1,27 @@
+execution:
+  mode: hybrid
+
+paths:
+  ledger: /iridisfs/scratch/lag1e24/kitsune/repo/kitsune-pgx/ledger/kitsune.db
+  work: /iridisfs/scratch/lag1e24/kitsune/work
+  manifest: /iridisfs/scratch/lag1e24/kitsune/repo/kitsune-pgx/manifest
+  logs: /iridisfs/scratch/lag1e24/kitsune/logs
+
+iridis:
+  ssh_host: loginX001.iridis.soton.ac.uk
+  scratch_root: /iridisfs/scratch/lag1e24/kitsune
+  repo: /iridisfs/scratch/lag1e24/kitsune/repo/kitsune-pgx
+
+remote:
+  user: lag1e24
+
+limits:
+  min_free_gb: 200
+  max_attempts: 3
+  heartbeat_timeout_min: 30
+  threads_per_job: 16
+
+options:
+  skip_tier_x: true
+  skip_already_processed: true
+  verify_md5: true

@@ -1,0 +1,13 @@
+config.yaml
+config.pgx.yaml
+*.db
+*.db-*
+__pycache__/
+.venv/
+dist/
+*.egg-info/
+.pytest_cache/
+deploy.tar
+tmp_query.sql
+ena_test.py
+estimate_download.py

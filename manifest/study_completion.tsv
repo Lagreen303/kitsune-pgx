@@ -1,0 +1,40 @@
+gse,total_runs,done,failed,skipped,pending,in_flight,study_status,analysis_ready,top_failure_summary,generated_at_utc
+GSE120221,25,0,0,0,25,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE135194,13,0,0,0,13,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE144568,448,0,0,0,448,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE145410,8,0,6,0,1,1,in_progress,N,"1x Ambiguous FASTQ roles (lengths): {'SRR11097209_1.fastq.gz': 150, 'SRR11097209_2.fastq.gz': 150}; index=0",2026-09-18T11:27:43+00:00
+GSE147989,8,0,0,0,8,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE153319,12,0,0,0,12,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE154109,19,0,0,0,19,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE154392,12,0,0,0,12,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE159624,16,0,0,0,16,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE169426,4,0,0,4,0,0,skipped_all,N,,2026-09-18T11:27:43+00:00
+GSE174125,2,1,1,0,0,0,partial,N,"1x Command '['wget', '-q', '-O', '/home/lag1e24/kitsune/work/SRR14476398/fastq/SRR14476398_1.fastq.gz', 'https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR144/098/SRR14476398/SRR14476398_1.fastq.gz']' returned non",2026-09-18T11:27:43+00:00
+GSE180298,12,0,0,0,12,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE182123,25,0,0,0,25,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE182926,3,3,0,0,0,0,complete,Y,,2026-09-18T11:27:43+00:00
+GSE183326,2,2,0,0,0,0,complete,Y,,2026-09-18T11:27:43+00:00
+GSE184937,6,0,6,0,0,0,failed_all,N,1x Ambiguous FASTQ roles (lengths): {'SRR16102644_1.fastq': 91}; index=0,2026-09-18T11:27:43+00:00
+GSE195471,50,0,0,0,50,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE198681,16,0,0,0,16,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE200456,8,0,8,0,0,0,failed_all,N,"8x Need at least 2 FASTQs, got 1",2026-09-18T11:27:43+00:00
+GSE205490,10,0,0,0,10,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE210433,38,0,0,0,38,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE227903,312,0,0,0,312,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE237923,3,0,3,0,0,0,failed_all,N,"2x Need at least 2 FASTQs, got 1",2026-09-18T11:27:43+00:00
+GSE241417,18,0,0,0,18,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE241825,40,0,0,0,40,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE244589,8,0,0,0,8,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE250077,12,0,0,0,12,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE253355,24,0,0,0,24,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE253702,6,0,6,0,0,0,failed_all,N,"1x Ambiguous FASTQ roles (lengths): {'SRR27662627_1.fastq.gz': 150, 'SRR27662627_2.fastq.gz': 150}; index=0",2026-09-18T11:27:43+00:00
+GSE254478,4,0,4,0,0,0,failed_all,N,"4x Need at least 2 FASTQs, got 1",2026-09-18T11:27:43+00:00
+GSE262392,3,2,1,0,0,0,partial,N,"1x Ambiguous FASTQ roles (lengths): {'SRR28453713_1.fastq.gz': 28, 'SRR28453713_2.fastq.gz': 8}; index=1",2026-09-18T11:27:43+00:00
+GSE275501,4,0,4,0,0,0,failed_all,N,"4x Need at least 2 FASTQs, got 1",2026-09-18T11:27:43+00:00
+GSE279904,22,0,0,0,22,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE283144,16,0,0,0,16,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE288862,16,0,0,0,16,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE291294,12,0,0,0,12,0,in_progress,N,,2026-09-18T11:27:43+00:00
+GSE293390,2,0,2,0,0,0,failed_all,N,"1x Need at least 2 FASTQs, got 1",2026-09-18T11:27:43+00:00
+GSE306339,6,0,6,0,0,0,failed_all,N,"6x Need at least 2 FASTQs, got 1",2026-09-18T11:27:43+00:00
+GSE309534,19,0,0,0,19,0,in_progress,N,,2026-09-18T11:27:43+00:00
